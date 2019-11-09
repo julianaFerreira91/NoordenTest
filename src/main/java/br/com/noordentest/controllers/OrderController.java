@@ -6,6 +6,10 @@ import br.com.noordentest.models.Product;
 import br.com.noordentest.repository.ClientRepository;
 import br.com.noordentest.repository.OrderRepository;
 import br.com.noordentest.repository.ProductRepository;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,5 +47,34 @@ public class OrderController {
         repos.save(order);
         
         return "redirect:/";
+    }
+    
+    @RequestMapping("/report")
+    public String report() {
+        Iterable<Orders> orders = repos.findAll();
+        
+        try {
+            File file = new File("teste-relatorio-vendas.txt");
+
+            if(!file.exists()) {
+                file.createNewFile();
+            }
+            
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            bw.write("id;product_id;client_id;amount\n");
+            
+            for(Orders order : orders) {
+                bw.write(order.getId() + ";" + order.getProduct().getId() + ";" + 
+                         order.getClient().getId() + ";" + order.getAmount() + "\n");
+            }
+            
+            bw.close();
+            
+            return "redirect:/";
+        } catch(IOException e) {
+            return e.getMessage();
+        }
     }
 }
