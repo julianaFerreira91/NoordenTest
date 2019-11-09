@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Noorden Test</title>
+        <meta charset="UTF-8" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <nav>
+            <div class="nav-wrapper teal darken-1">
+                <a href="/" class="brand-logo center">Noorden Test - Vendas</a>
+            </div>
+        </nav>
+        
+        <form id="frm-items" method="get" action="/orders">
+            <div class="row">
+                <div class="col l8 m8 s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Lista de Clientes</span>
+                            <div class="container">
+                                <table class="striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>CPF</th>
+                                            <th>Data de Nascimento</th>
+                                            <th>Sexo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="client : ${clients}">
+                                            <td>
+                                                <label>
+                                                    <input class="with-gap" type="radio" name="client_id" th:value="${client.id}" />
+                                                    <span class="black-text flow-text" th:text="${client.name}"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <span th:text="${client.cpf}"></span>
+                                            </td>
+                                            <td>
+                                                <span th:text="${client.birthdate}"></span>
+                                            </td>
+                                            <td>
+                                                <span th:text="${client.sex}"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+                <div class="col l4 m4 s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Lista de Produtos</span>
+                            <div class="container">
+                                <table class="striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Preço</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="product : ${products}">
+                                            <td>
+                                                <label>
+                                                    <input class="with-gap" type="radio" name="product_id" th:value="${product.id}" />
+                                                    <span class="black-text" th:text="${product.name}"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <span th:text="${product.price}"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m12 l12 center">
+                    <button class="btn btn-large teal darken-3" type="submit">
+                        <i class="material-icons left">
+                            add_shopping_cart
+                        </i>
+                        Comprar
+                    </button>
+                </div>
+            </div>
+        </form>
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+    </body>
+</html>
