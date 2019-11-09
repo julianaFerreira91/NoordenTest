@@ -17,12 +17,12 @@ insert into `product`(`name`, `price`) values ('Bolsa Esportiva', 99.99);
 insert into `product`(`name`, `price`) values ('Bota Tratorada', 249.89);
 
 insert into `orders`(`amount`, `client_id`, `product_id`) values (249.89, 5, 7);
-insert into `orders`(`amount`, `client_id`, `product_id`) values (249.89, 1, 5);
-insert into `orders`(`amount`, `client_id`, `product_id`) values (249.89, 6, 1);
-insert into `orders`(`amount`, `client_id`, `product_id`) values (249.89, 3, 4);
-insert into `orders`(`amount`, `client_id`, `product_id`) values (249.89, 2, 1);
-insert into `orders`(`amount`, `client_id`, `product_id`) values (249.89, 4, 2);
+insert into `orders`(`amount`, `client_id`, `product_id`) values (165.89, 1, 5);
+insert into `orders`(`amount`, `client_id`, `product_id`) values (149.90, 6, 1);
+insert into `orders`(`amount`, `client_id`, `product_id`) values (59.90, 3, 4);
+insert into `orders`(`amount`, `client_id`, `product_id`) values (149.90, 2, 1);
+insert into `orders`(`amount`, `client_id`, `product_id`) values (89.99, 4, 2);
 insert into `orders`(`amount`, `client_id`, `product_id`) values (249.89, 7, 3);
-insert into `orders`(`amount`, `client_id`, `product_id`) values (249.89, 3, 6);
+insert into `orders`(`amount`, `client_id`, `product_id`) values (99.99, 3, 6);
 insert into `orders`(`amount`, `client_id`, `product_id`) values (249.89, 2, 3);
 insert into `orders`(`amount`, `client_id`, `product_id`) values (249.89, 6, 3);
